@@ -130,6 +130,14 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+.ng2-igl-loading{
+  position: relative;
+  display: block;
+  margin: 0 auto 0 auto;
+  top: 45%;
+  z-index:8;
+  color: #fff;
+}
 .ng2-igl-text {
   color: #fff;
   display: inline-block;

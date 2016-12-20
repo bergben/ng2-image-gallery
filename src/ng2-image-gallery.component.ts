@@ -21,7 +21,8 @@ export interface ImageInterface {
             <div class="ng2-image-gallery-lightbox">
                 <a class="ng2-igl-close" (click)="closeLightboxGallery()"><i class="fa fa-close"></i></a>
                 <a class="ng2-igl-nav-left" *ngIf="images.length >1 && curImageIndex!==0" (click)="previousImage()"><i class="fa fa-angle-left"></i></a>
-                <img *ngIf="!loading" [src]="images[curImageIndex][asImage]" (click)="nextImage()" class="ng2-igl-img" />
+                <img *ngIf="!loading" [src]="images[curImageIndex][asImage]" (click)="nextImage()" class="ng2-igl-img" (load)="onLoad()" />
+                <span *ngIf="loading" class="ng2-igl-loading"><i class="fa fa-spinner fa-2x" aria-hidden="true"></i></span>
                 <a class="ng2-igl-nav-right" *ngIf="images.length >1 && curImageIndex!==images.length-1" (click)="nextImage()"><i class="fa fa-angle-right"></i></a>
                 <span class="ng2-igl-text" [innerHTML]="images[curImageIndex][asText]"></span>
                 <span class="ng2-igl-count">{{curImageIndex+1}}/{{images.length}}</span>
@@ -66,18 +67,21 @@ export class Ng2ImageGalleryComponent implements OnChanges {
         this.isLightboxOpen = false;
     }
     public nextImage(): void {
+        this.loading=true;
         if(this.curImageIndex!==this.images.length-1){
             this.curImageIndex++;
             this.curThumbnailIndex=this.curImageIndex;
         }
     }
     public previousImage(): void {
+        this.loading=true;
         if(this.curImageIndex!==0){
             this.curImageIndex--;
         }
         this.curThumbnailIndex=this.curImageIndex;
     }
     public toImage(index: number): void {
+        this.loading=true;
         this.curImageIndex = index;
         this.curThumbnailIndex=this.curImageIndex;
     }
@@ -97,6 +101,9 @@ export class Ng2ImageGalleryComponent implements OnChanges {
         else{
             this.curThumbnailIndex=0;
         }
+    }
+    public onLoad():void{
+        this.loading=false;
     }
     public onAction(image:any):void{
         this.actionEmitter.emit({
