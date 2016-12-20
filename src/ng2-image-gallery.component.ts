@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 
 export interface ImageInterface {
     thumbnail?: any;
@@ -10,8 +10,11 @@ export interface ImageInterface {
 @Component({
     selector: 'ng2-image-gallery',
     template: `
-    <div>
-        <img *ngFor="let image of images; let index=index" [src]="image[asThumbnail]" (click)="openLightboxGallery(index)" class="ng2-image-gallery-thumbnail">
+    <div class="ng2-image-gallery-thumbnails">
+        <div *ngFor="let image of images; let index=index" class="ng2-image-gallery-thumbnail-container">
+            <img [src]="image[asThumbnail]" (click)="openLightboxGallery(index)" class="ng2-image-gallery-thumbnail">
+            <button class="btn btn-primary ng2-image-gallery-action" *ngIf="actionText!==''" (click)="onAction(image)" [innerHTML]="actionText"></button>
+        </div>
     </div>
     <to-body-displacer>
         <div class="ng2-image-gallery-overlay" [hidden]="!isLightboxOpen">
@@ -41,6 +44,8 @@ export class Ng2ImageGalleryComponent implements OnChanges {
     @Input('asImage') asImage: string = "image";
     @Input('asThumbnail') asThumbnail: string = "thumbnail";
     @Input('asText') asText: string = "text";
+    @Input('actionText') actionText: string = "";
+    @Output('onAction') actionEmitter: EventEmitter<any> = new EventEmitter();
     loading: boolean = false;
     curImageIndex: number = 0;
     curThumbnailIndex: number = 0;
@@ -92,5 +97,10 @@ export class Ng2ImageGalleryComponent implements OnChanges {
         else{
             this.curThumbnailIndex=0;
         }
+    }
+    public onAction(image:any):void{
+        this.actionEmitter.emit({
+            image: image
+        });
     }
 }

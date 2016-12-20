@@ -13,11 +13,28 @@
   user-select: none;
   -webkit-user-drag: none;
 }
-.ng2-image-gallery-thumbnail{
+.ng2-image-gallery-thumbnail-container{
     margin: 2px 2px 0 0; 
     max-width: 100px;
     max-height: 100px;
     cursor: pointer;
+}
+.ng2-image-gallery-thumbnail{
+    position:absolute;
+    top:0;
+    left:0;
+    max-width: 100px;
+    max-height: 100px;
+}
+.ng2-image-gallery-thumbnail-container:hover > .ng2-image-gallery-action{
+    display:block;
+}
+.ng2-image-gallery-action{
+    display:none;
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
 }
 .ng2-image-gallery-lightbox{
   position: fixed;
