@@ -18,11 +18,11 @@
     max-width: 100px;
     max-height: 100px;
     cursor: pointer;
+    display:inline-block;
+    position:relative;
+    overflow:hidden;
 }
 .ng2-image-gallery-thumbnail{
-    position:absolute;
-    top:0;
-    left:0;
     max-width: 100px;
     max-height: 100px;
 }
