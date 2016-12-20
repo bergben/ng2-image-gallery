@@ -54,8 +54,15 @@ export interface ImageInterface {
 You can, as it might be more comfortable for you because you have different naming for your properties already, provide different naming for the properties like so:
 
 ```html
-<ng2-image-gallery [images]="myImages" [asText]="content" [asThumbnail]="mythumb"></ng2-image-gallery> 
+<ng2-image-gallery [images]="myImages" [asText]="'content'" [asThumbnail]="'mythumb'"></ng2-image-gallery> 
 ```
+
+You can also add some action to the image by simply providing an actionText.
+```html
+<ng2-image-gallery [images]="myImages" [actionText]="'do something!'" (onAction)="doSomething($event)"></ng2-image-gallery> 
+```
+You can then style the button and listen to the onAction output event.
+
 
 ## Contribute
 It would be awesome if someone had the time to make some improvements, like animations, limit to show only 10 thumbnails and then "+x more" etc. Pull requests are much appreciated!
