@@ -58,7 +58,7 @@ You can, as it might be more comfortable for you because you have different nami
 ```
 
 ## Contribute
-It would be awesome if someone had the time to make some improvements, like animations etc. Pull requests are much appreciated!
+It would be awesome if someone had the time to make some improvements, like animations, limit to show only 10 thumbnails and then "+x more" etc. Pull requests are much appreciated!
 
 ## To-do
  - Provide a demo

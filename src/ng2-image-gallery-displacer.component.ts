@@ -25,11 +25,9 @@ export class DisplacerPortalDirective extends TemplatePortal {
 
 @Component({
   selector: 'to-body-displacer',
-  template: `
-<template displacerPortal>
+  template: `<template displacerPortal>
   <ng-content></ng-content>
-</template>
-`
+  </template>`
 })
 export class DisplacerComponent implements OnDestroy, AfterViewInit {
 

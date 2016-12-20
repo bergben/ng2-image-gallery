@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Ng2ImageGalleryComponent} from './ng2-image-gallery.component';
-import { DisplacerComponent } from './ng2-image-gallery-displacer.component';
+import { DisplacerComponent, DisplacerPortalDirective } from './ng2-image-gallery-displacer.component';
 import { MaterialModule } from '@angular/material';
 
 @NgModule({
@@ -10,6 +10,7 @@ import { MaterialModule } from '@angular/material';
         MaterialModule.forRoot(),
     ],
     declarations: [
+        DisplacerPortalDirective,
         DisplacerComponent,
         Ng2ImageGalleryComponent
     ],
