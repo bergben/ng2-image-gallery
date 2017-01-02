@@ -21,7 +21,7 @@ export interface ImageInterface {
             <div class="ng2-image-gallery-lightbox">
                 <a class="ng2-igl-close" (click)="closeLightboxGallery()"><i class="fa fa-close"></i></a>
                 <a class="ng2-igl-nav-left" *ngIf="images.length >1 && curImageIndex!==0" (click)="previousImage()"><i class="fa fa-angle-left"></i></a>
-                <img [hidden]="loading" [src]="images[curImageIndex][asImage]" (click)="nextImage()" class="ng2-igl-img" (load)="onLoad()" />
+                <img [hidden]="loading" *ngIf="images.length>0" [src]="images[curImageIndex][asImage]" (click)="nextImage()" class="ng2-igl-img" (load)="onLoad()" />
                 <span [hidden]="!loading" *ngIf="images.length>0" class="ng2-igl-loading"><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></span>
                 <a class="ng2-igl-nav-right" *ngIf="images.length >1 && curImageIndex!==images.length-1" (click)="nextImage()"><i class="fa fa-angle-right"></i></a>
                 <span class="ng2-igl-text" *ngIf="images.length>0" [innerHTML]="images[curImageIndex][asText]"></span>
