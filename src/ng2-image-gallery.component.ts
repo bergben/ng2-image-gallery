@@ -22,9 +22,9 @@ export interface ImageInterface {
                 <a class="ng2-igl-close" (click)="closeLightboxGallery()"><i class="fa fa-close"></i></a>
                 <a class="ng2-igl-nav-left" *ngIf="images.length >1 && curImageIndex!==0" (click)="previousImage()"><i class="fa fa-angle-left"></i></a>
                 <img [hidden]="loading" [src]="images[curImageIndex][asImage]" (click)="nextImage()" class="ng2-igl-img" (load)="onLoad()" />
-                <span [hidden]="!loading" class="ng2-igl-loading"><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></span>
+                <span [hidden]="!loading" *ngIf="images.length>0" class="ng2-igl-loading"><i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i></span>
                 <a class="ng2-igl-nav-right" *ngIf="images.length >1 && curImageIndex!==images.length-1" (click)="nextImage()"><i class="fa fa-angle-right"></i></a>
-                <span class="ng2-igl-text" [innerHTML]="images[curImageIndex][asText]"></span>
+                <span class="ng2-igl-text" *ngIf="images.length>0" [innerHTML]="images[curImageIndex][asText]"></span>
                 <span class="ng2-igl-count">{{curImageIndex+1}}/{{images.length}}</span>
                 <div class="ng2-igl-thumbnails">
                     <a class="ng2-igl-nav-left thumbnails" [ngClass]="{'non-visible': curThumbnailIndex < 4 }" (click)="thumbnailsPrevious()"><i class="fa fa-angle-left"></i></a>
