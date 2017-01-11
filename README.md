@@ -57,12 +57,21 @@ You can, as it might be more comfortable for you because you have different nami
 <ng2-image-gallery [images]="myImages" [asText]="'content'" [asThumbnail]="'mythumb'"></ng2-image-gallery> 
 ```
 
-You can also add some action to the image by simply providing an actionText.
+### User interaction
+
+You can also add some user interaction to the image by simply providing an actionText.
 ```html
 <ng2-image-gallery [images]="myImages" [actionText]="'do something!'" (onAction)="doSomething($event)"></ng2-image-gallery> 
 ```
 You can then style the button and listen to the onAction output event.
 
+### Draggable / sortable
+
+For administration purposes it might be useful to make the thumbnails draggable so that you can change the order of images in a gallery. Simply set `draggable="true"` to do so.
+```html
+<ng2-image-gallery [images]="myImages" [draggable]="true" (onDrop)="onDrop($event)"></ng2-image-gallery> 
+```
+You can listen to the onDrop event, which will have a property `images` which contains the images in the current order.
 
 ## Contribute
 It would be awesome if someone had the time to make some improvements, like animations, limit to show only 10 thumbnails and then "+x more" etc. Pull requests are much appreciated!

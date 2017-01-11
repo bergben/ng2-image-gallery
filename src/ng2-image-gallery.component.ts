@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
+import { DragulaService } from 'ng2-dragula';
 
 export interface ImageInterface {
     thumbnail?: any;
@@ -10,7 +11,13 @@ export interface ImageInterface {
 @Component({
     selector: 'ng2-image-gallery',
     template: `
-    <div class="ng2-image-gallery-thumbnails">
+    <div class="ng2-image-gallery-thumbnails" *ngIf="!draggable">
+        <div *ngFor="let image of images; let index=index" class="ng2-image-gallery-thumbnail-container">
+            <img [src]="image[asThumbnail]" (click)="openLightboxGallery(index)" class="ng2-image-gallery-thumbnail">
+            <button class="btn btn-primary ng2-image-gallery-action" *ngIf="actionText!==''" (click)="onAction(image)" [innerHTML]="actionText"></button>
+        </div>
+    </div>
+    <div class="ng2-image-gallery-thumbnails" [dragula]="'ng2-image-gallery-bag'" [dragulaModel]='images' *ngIf="draggable">
         <div *ngFor="let image of images; let index=index" class="ng2-image-gallery-thumbnail-container">
             <img [src]="image[asThumbnail]" (click)="openLightboxGallery(index)" class="ng2-image-gallery-thumbnail">
             <button class="btn btn-primary ng2-image-gallery-action" *ngIf="actionText!==''" (click)="onAction(image)" [innerHTML]="actionText"></button>
@@ -42,16 +49,21 @@ export interface ImageInterface {
 })
 export class Ng2ImageGalleryComponent implements OnChanges {
     @Input() images: ImageInterface[] = [];
+    @Input('draggable') draggable: boolean = false;
     @Input('asImage') asImage: string = "image";
     @Input('asThumbnail') asThumbnail: string = "thumbnail";
     @Input('asText') asText: string = "text";
     @Input('actionText') actionText: string = "";
     @Output('onAction') actionEmitter: EventEmitter<any> = new EventEmitter();
+    @Output('onDrop') dropEmitter: EventEmitter<any> = new EventEmitter();
     loading: boolean = false;
     curImageIndex: number = 0;
     curThumbnailIndex: number = 0;
     isLightboxOpen: boolean = false;
-    constructor() {
+    constructor(private dragulaService: DragulaService) {
+        dragulaService.drop.subscribe((value) => {
+            this.onDrop(value.slice(1));
+        });
     }
     ngOnChanges(changes) {
         if (changes.images) {
@@ -67,47 +79,53 @@ export class Ng2ImageGalleryComponent implements OnChanges {
         this.isLightboxOpen = false;
     }
     public nextImage(): void {
-        this.loading=true;
-        if(this.curImageIndex!==this.images.length-1){
+        this.loading = true;
+        if (this.curImageIndex !== this.images.length - 1) {
             this.curImageIndex++;
-            this.curThumbnailIndex=this.curImageIndex;
+            this.curThumbnailIndex = this.curImageIndex;
         }
     }
     public previousImage(): void {
-        this.loading=true;
-        if(this.curImageIndex!==0){
+        this.loading = true;
+        if (this.curImageIndex !== 0) {
             this.curImageIndex--;
         }
-        this.curThumbnailIndex=this.curImageIndex;
+        this.curThumbnailIndex = this.curImageIndex;
     }
     public toImage(index: number): void {
-        this.loading=true;
+        this.loading = true;
         this.curImageIndex = index;
-        this.curThumbnailIndex=this.curImageIndex;
+        this.curThumbnailIndex = this.curImageIndex;
     }
-    public thumbnailsNext():void{
-        if(this.curThumbnailIndex+5<this.images.length){
-            this.curThumbnailIndex+=5;
+    public thumbnailsNext(): void {
+        if (this.curThumbnailIndex + 5 < this.images.length) {
+            this.curThumbnailIndex += 5;
         }
-        else{
-            this.curThumbnailIndex=this.images.length-1;
+        else {
+            this.curThumbnailIndex = this.images.length - 1;
         }
-        this.curThumbnailIndex+=5;
+        this.curThumbnailIndex += 5;
     }
-    public thumbnailsPrevious():void{
-        if(this.curThumbnailIndex-5>0){
-            this.curThumbnailIndex-=5;
+    public thumbnailsPrevious(): void {
+        if (this.curThumbnailIndex - 5 > 0) {
+            this.curThumbnailIndex -= 5;
         }
-        else{
-            this.curThumbnailIndex=0;
+        else {
+            this.curThumbnailIndex = 0;
         }
     }
-    public onLoad():void{
-        this.loading=false;
+    public onLoad(): void {
+        this.loading = false;
     }
-    public onAction(image:any):void{
+    public onAction(image: any): void {
         this.actionEmitter.emit({
             image: image
+        });
+    }
+    public onDrop(args) {
+        let [e, el] = args;
+        this.dropEmitter.emit({
+            images: this.images
         });
     }
 }

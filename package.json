@@ -1,6 +1,6 @@
 {
   "name": "ng2-image-gallery",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Basic Angular 2 image gallery",
   "repository": {
     "type": "git",
@@ -26,7 +26,8 @@
     "photo"
   ],
   "dependencies":{
-    "@angular/material": "^2.0.0-alpha.11-1"
+    "@angular/material": "^2.0.0-alpha.11-1",
+    "ng2-dragula": "^1.2.2"
   },
   "peerDependencies": {
     "@angular/core": "^2.0.0",
