@@ -217,16 +217,17 @@
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767px) { 
    .ng2-igl-thumbnail{
-     max-width: 40px;
-     max-height: 40px;
-     margin-right: 2px;
+     max-width: 35px;
+     max-height: 35px;
+     margin-right: 1px;
    }
    .ng2-igl-thumbnails{
      width: 100%;
      margin:0;
+     bottom: 15px;
    }
    .ng2-igl-nav-right.thumbnails i, .ng2-igl-nav-left.thumbnails i{
-      margin: 0 5px;
+      margin: 0 3px;
       font-size: 35px;
    }
    .ng2-igl-nav-left i, .ng2-igl-nav-right i{
