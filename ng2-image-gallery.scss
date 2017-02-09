@@ -216,6 +216,10 @@
 }
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767px) { 
+    .ng2-igl-img{
+      max-height: calc(100% - 100px);
+      max-width: calc(100% - 60px);
+    }
    .ng2-igl-thumbnail{
      max-width: 35px;
      max-height: 35px;
@@ -224,7 +228,7 @@
    .ng2-igl-thumbnails{
      width: 100%;
      margin:0;
-     bottom: 15px;
+     bottom: 20px;
    }
    .ng2-igl-nav-right.thumbnails i, .ng2-igl-nav-left.thumbnails i{
       margin: 0 3px;
