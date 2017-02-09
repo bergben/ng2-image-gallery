@@ -214,3 +214,28 @@
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
   filter: alpha(opacity=20);
 }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767px) { 
+   .ng2-igl-thumbnail{
+     max-width: 40px;
+     max-height: 40px;
+     margin-right: 2px;
+   }
+   .ng2-igl-thumbnails{
+     width: 100%;
+     margin:0;
+   }
+   .ng2-igl-nav-right.thumbnails i, .ng2-igl-nav-left.thumbnails i{
+      margin: 0 5px;
+      font-size: 35px;
+   }
+   .ng2-igl-nav-left i, .ng2-igl-nav-right i{
+     font-size: 45px;
+   }
+   .ng2-igl-nav-right i{
+     right: 5px;
+   }
+   .ng2-igl-nav-left i{
+     left: 5px;
+   }
+}

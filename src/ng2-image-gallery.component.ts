@@ -72,8 +72,10 @@ export class Ng2ImageGalleryComponent implements OnChanges {
     }
     public openLightboxGallery(index: number): void {
         this.isLightboxOpen = true;
-        this.curImageIndex = index - 1;
-        this.nextImage();
+        setTimeout(()=>{
+            this.curImageIndex = index - 1;
+            this.nextImage();
+        });
     }
     public closeLightboxGallery(): void {
         this.isLightboxOpen = false;
