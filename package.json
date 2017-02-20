@@ -1,6 +1,6 @@
 {
   "name": "ng2-image-gallery",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Basic Angular 2 image gallery",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "license": "MIT",
   "module": "./dist/ng2-image-gallery.js",
   "main": "./dist/build/ng2-image-gallery.umd.js",
-  "typings": "./build/ng2-image-gallery.d.ts",
+  "typings": "./dist/ng2-image-gallery.d.ts",
   "scripts": {
     "transpile": "ngc",
     "package": "rollup -c",
