@@ -3,10 +3,9 @@
     "baseUrl": ".",
     "module": "es2015",
     "target": "es5",
-    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "outDir": "build",
+    "outDir": "dist",
     "moduleResolution": "node",
     "declaration": true,
     "stripInternal": true,
@@ -16,7 +15,11 @@
       "@angular/material": ["node_modules/@angular/material"],
       "@angular/common": ["node_modules/@angular/common"],
       "ng2-dragula": ["node_modules/ng2-dragula"]
-    }
+    },
+    "lib": [
+      "es2015", 
+      "dom"
+    ]
   },
   "files": [
     "ng2-image-gallery.ts"

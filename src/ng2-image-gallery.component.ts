@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnChanges, EventEmitter, Output, Inject, forwardRef } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
 
 export interface ImageInterface {
@@ -60,7 +60,7 @@ export class Ng2ImageGalleryComponent implements OnChanges {
     curImageIndex: number = 0;
     curThumbnailIndex: number = 0;
     isLightboxOpen: boolean = false;
-    constructor(private dragulaService: DragulaService) {
+    constructor(@Inject(forwardRef(() => DragulaService)) private dragulaService: DragulaService) {
         dragulaService.drop.subscribe((value) => {
             this.onDrop(value.slice(1));
         });
