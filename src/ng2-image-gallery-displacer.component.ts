@@ -6,7 +6,9 @@ import {
   ViewChild,
   Input,
   OnDestroy,
-  AfterViewInit
+  AfterViewInit,
+  Inject,
+  forwardRef
 } from '@angular/core';
 
 import {
@@ -18,7 +20,7 @@ import {
 
 @Directive({ selector: '[displacerPortal]' })
 export class DisplacerPortalDirective extends TemplatePortal {
-  constructor(templateRef: TemplateRef<any>, viewContainerRef: ViewContainerRef) {
+  constructor(@Inject(forwardRef(() => TemplateRef)) templateRef: TemplateRef<any>,@Inject(forwardRef(() => ViewContainerRef)) viewContainerRef: ViewContainerRef) {
     super(templateRef, viewContainerRef);
   }
 }
@@ -38,7 +40,7 @@ export class DisplacerComponent implements OnDestroy, AfterViewInit {
 
   private _overlayRef: OverlayRef = undefined;
 
-  constructor(private _overlay: Overlay) {}
+  constructor(@Inject(forwardRef(() => Overlay)) private _overlay: Overlay) {}
 
   public ngOnDestroy() {
     this._overlayRef.detach();
