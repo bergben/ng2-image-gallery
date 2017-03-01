@@ -76,6 +76,7 @@ export class Ng2ImageGalleryComponent implements OnChanges {
             this.ngZone.run(()=>{
                 this.curImageIndex = index - 1;
                 this.nextImage();
+                this.loading = false;
             })
         },0);
     }
@@ -119,9 +120,7 @@ export class Ng2ImageGalleryComponent implements OnChanges {
         }
     }
     public onLoad(): void {
-        this.ngZone.run(()=>{
-            this.loading = false;
-        });
+        this.loading = false;
     }
     public onAction(image: any): void {
         this.actionEmitter.emit({
