@@ -67,9 +67,7 @@ export class Ng2ImageGalleryComponent implements OnChanges {
     }
     ngOnChanges(changes) {
         if (changes.images) {
-            this.ngZone.run(()=>{
-                this.images = changes.images.currentValue;
-            });
+            this.images = changes.images.currentValue;
         }
     }
     public openLightboxGallery(index: number): void {
@@ -121,7 +119,9 @@ export class Ng2ImageGalleryComponent implements OnChanges {
         }
     }
     public onLoad(): void {
-        this.loading = false;
+        this.ngZone.run(()=>{
+            this.loading = false;
+        });
     }
     public onAction(image: any): void {
         this.actionEmitter.emit({
