@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, EventEmitter, Output, Inject, forwardRef } from '@angular/core';
+import { Component, Input, OnChanges, EventEmitter, Output, Inject, forwardRef, NgZone } from '@angular/core';
 import { DragulaService } from 'ng2-dragula';
 
 export interface ImageInterface {
@@ -60,22 +60,26 @@ export class Ng2ImageGalleryComponent implements OnChanges {
     curImageIndex: number = 0;
     curThumbnailIndex: number = 0;
     isLightboxOpen: boolean = false;
-    constructor(@Inject(forwardRef(() => DragulaService)) private dragulaService: DragulaService) {
+    constructor(@Inject(forwardRef(() => DragulaService)) private dragulaService: DragulaService, private ngZone: NgZone) {
         dragulaService.drop.subscribe((value) => {
             this.onDrop(value.slice(1));
         });
     }
     ngOnChanges(changes) {
         if (changes.images) {
-            this.images = changes.images.currentValue;
+            this.ngZone.run(()=>{
+                this.images = changes.images.currentValue;
+            });
         }
     }
     public openLightboxGallery(index: number): void {
         this.isLightboxOpen = true;
         setTimeout(()=>{
-            this.curImageIndex = index - 1;
-            this.nextImage();
-        });
+            this.ngZone.run(()=>{
+                this.curImageIndex = index - 1;
+                this.nextImage();
+            })
+        },0);
     }
     public closeLightboxGallery(): void {
         this.isLightboxOpen = false;
