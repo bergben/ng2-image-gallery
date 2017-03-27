@@ -82,8 +82,8 @@ export class Ng2ImageGalleryComponent implements OnChanges {
         this.isLightboxOpen = false;
     }
     public nextImage(): void {
-        this.loading = true;
         if (this.curImageIndex !== this.images.length - 1) {
+            this.loading = true;
             this.curImageIndex++;
             this.curThumbnailIndex = this.curImageIndex;
         }
