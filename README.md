@@ -3,6 +3,9 @@
 # ng2-image-gallery
 Basic Angular 2 image gallery.
 
+## Demo
+A simple demo is available as a plnkr: http://plnkr.co/edit/Qyg5m7XsiKCBpqa6I4ku?p=preview
+
 ## Install
 ```bash
 $ npm install ng2-image-gallery --save
@@ -77,6 +80,3 @@ You can listen to the onDrop event, which will have a property `images` which co
 
 ## Contribute
 It would be awesome if someone had the time to make some improvements, like animations, limit to show only 10 thumbnails and then "+x more" etc. Pull requests are much appreciated!
-
-## To-do
- - Provide a demo
