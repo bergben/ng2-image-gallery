@@ -9,7 +9,7 @@ import { DragulaModule } from 'ng2-dragula';
     imports: [
         CommonModule,
         DragulaModule,
-        MaterialModule.forRoot(),
+        MaterialModule,
     ],
     declarations: [
         DisplacerPortalDirective,
