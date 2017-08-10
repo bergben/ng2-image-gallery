@@ -29,9 +29,7 @@ import { MyComponent } from './my.component';
 export class MyAppModule {}
 ```
 ### Import the styles
-This library uses <a href="https://v4-alpha.getbootstrap.com/getting-started/download/#package-managers">Bootstrap 4</a> and <a href="https://www.npmjs.com/package/font-awesome">font-awesome</a>, so make sure to install those if you want the default styling to apply. 
-
-**If you don't import font-awesome in your app then this package won't work properly because there won't be any icons for next / previous and close. Please refer to <a href="https://stackoverflow.com/questions/38796541/how-to-add-font-awesome-to-angular-2-cli-project">this SO question</a> if you don't know how to do that.**
+This library uses <a href="https://v4-alpha.getbootstrap.com/getting-started/download/#package-managers">Bootstrap 4</a>, so make sure to install that if you want the default styling to apply. 
 
 If you use Sass / Scss you can import the styles like so:
 ```
