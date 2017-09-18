@@ -19,7 +19,7 @@ import {
 } from '@angular/material';
 
 @Directive({ selector: '[displacerPortal]' })
-export class DisplacerPortalDirective extends TemplatePortal {
+export class DisplacerPortalDirective extends TemplatePortal<any> {
   constructor(@Inject(forwardRef(() => TemplateRef)) templateRef: TemplateRef<any>,@Inject(forwardRef(() => ViewContainerRef)) viewContainerRef: ViewContainerRef) {
     super(templateRef, viewContainerRef);
   }
