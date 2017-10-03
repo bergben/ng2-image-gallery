@@ -13,7 +13,7 @@ import {
 
 import {
   TemplatePortal,
-  OverlayState,
+  OverlayConfig,
   OverlayRef,
   Overlay
 } from '@angular/material';
@@ -33,7 +33,7 @@ export class DisplacerPortalDirective extends TemplatePortal<any> {
 })
 export class DisplacerComponent implements OnDestroy, AfterViewInit {
 
-  private _config = new OverlayState();
+  private _config = new OverlayConfig();
 
   @ViewChild(DisplacerPortalDirective)
   private _portal: DisplacerPortalDirective;
