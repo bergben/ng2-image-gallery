@@ -2,6 +2,7 @@
 
 # ng2-image-gallery
 Basic Angular 2 / 4 image gallery.
+For compatibility with Angular 5 this issue would have to be resolved: https://github.com/bergben/ng2-image-gallery/issues/9
 
 ## Demo
 A simple demo is available as a plnkr: http://plnkr.co/edit/Qyg5m7XsiKCBpqa6I4ku?p=preview
