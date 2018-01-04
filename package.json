@@ -1,6 +1,6 @@
 {
     "name": "ng2-image-gallery",
-    "version": "0.3.18",
+    "version": "0.3.19",
     "description": "Basic Angular 2 / 4 image gallery",
     "repository": {
         "type": "git",
@@ -44,7 +44,7 @@
         "zone.js": "^0.8.4"
     },
     "dependencies": {
-        "@angular/material": "^2.0.0-beta.11",
+        "@angular/material": "2.0.0-beta.11",
         "font-awesome": "^4.5.0",
         "ng2-dragula": ">=1.5.0"
     },
